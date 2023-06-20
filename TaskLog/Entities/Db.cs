@@ -25,7 +25,7 @@ namespace TaskLog.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer("Data Source=DEREKOVSKY\\SQLEXPRESS;"+
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-QFRCAHK;" +
                     "Initial Catalog=TaskLog;"+
                     "Integrated Security=True;"+
                     "Trust Server Certificate=True;"+
