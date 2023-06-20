@@ -28,7 +28,6 @@ namespace TaskLog
         public void Some()
         {
             Console.WriteLine("sdljkgs");
-            //test
         }
     }
 }
