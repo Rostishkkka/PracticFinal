@@ -7,8 +7,47 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="TaskLog" Height="500" Width="400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="Gray">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Вход"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="35"
+                       Style="{StaticResource HeaderTextBlockStyle}"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ui:SimpleStackPanel Grid.Column="1"
+                                     VerticalAlignment="Center"
+                                     Spacing="20">
+                    <TextBox x:Name="EmailSingInTextBox"
+                             ui:ControlHelper.Header="Почта"
+                             ui:ControlHelper.PlaceholderText="Введите почту"/>
+                    <PasswordBox x:Name="PasswordSignInPassBox"
+                                 ui:ControlHelper.Header="Пароль"
+                                 ui:ControlHelper.PlaceholderText="Введите пароль"/>
+                </ui:SimpleStackPanel>
+                <Button Grid.Column="1"
+                        VerticalAlignment="Bottom"
+                        HorizontalAlignment="Center"
+                        Content="Войти"
+                        Width="250"
+                        x:Name="SignInButton"
+                        Click="SignInButton_Click"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

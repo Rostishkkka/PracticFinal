@@ -14,7 +14,7 @@ namespace TaskLog.Entities
         public long UserId { get; set; }
         public string UserName { get; set; }
         public string UserEmail { get; set; }
-        public byte[] HashedPass { get; set; }
+        public string HashedPass { get; set; }
 
         public virtual ICollection<EventLog> EventLog { get; set; }
         public virtual ICollection<Tasks> Tasks { get; set; }

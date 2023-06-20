@@ -29,7 +29,7 @@ namespace TaskLog.Entities
                     "Initial Catalog=TaskLog;"+
                     "Integrated Security=True;"+
                     "Trust Server Certificate=True;"+
-                    "Command Timeout=300"+
+                    "Command Timeout=300;"+
                     "MultipleActiveResultSets=True");
             }
         }
@@ -144,6 +144,7 @@ namespace TaskLog.Entities
 
                 entity.Property(e => e.HashedPass)
                     .IsRequired()
+                    .HasMaxLength(68)
                     .HasColumnName("HASHED_PASS");
 
                 entity.Property(e => e.UserEmail)
