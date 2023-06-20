@@ -24,10 +24,5 @@ namespace TaskLog
         {
             InitializeComponent();
         }
-        
-        public void Some()
-        {
-            Console.WriteLine("sdljkgs");
-        }
     }
 }
