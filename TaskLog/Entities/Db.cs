@@ -39,9 +39,7 @@ namespace TaskLog.Entities
             {
                 entity.HasKey(e => e.CompId);
 
-                entity.Property(e => e.CompId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("COMP_ID");
+                entity.Property(e => e.CompId).HasColumnName("COMP_ID");
 
                 entity.Property(e => e.CompOemId)
                     .HasMaxLength(50)

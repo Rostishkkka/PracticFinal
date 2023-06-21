@@ -18,8 +18,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center"
-                    Margin="10 0 0 0">
+                    Margin="10 0 0 0" Orientation="Horizontal">
             <Button Content="Добавить"/>
+            <Button Content="Refresh"
+                    Margin="20 0 0 0"
+                    x:Name="RefreshButton"
+                    Click="RefreshButton_Click"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Right"

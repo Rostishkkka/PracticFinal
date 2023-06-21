@@ -52,5 +52,10 @@ namespace TaskLog
                 col.Header = TranslatorForDataGridColumns.Translate(col.Header.ToString());
             }
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            FillDataMainGrid();
+        }
     }
 }

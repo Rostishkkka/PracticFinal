@@ -32,6 +32,18 @@ namespace TaskLog
                     {
                         return "Статус";
                     }
+                case "CompOemId":
+                    {
+                        return "Id компонента";
+                    }
+                case "CompOemVer":
+                    {
+                        return "Версия компонента";
+                    }
+                case "SwVer":
+                    {
+                        return "Прошивка";
+                    }
             }
             return $"None";
         }
