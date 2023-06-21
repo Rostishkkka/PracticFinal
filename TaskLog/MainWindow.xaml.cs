@@ -79,7 +79,9 @@ namespace TaskLog
         {
             if(LoginValidation(EmailSingInTextBox.Text, PasswordSignInPassBox.Password))
             {
-                MessageBox.Show("Вход успешен");
+                TasksWindow tasksWindow = new TasksWindow();
+                tasksWindow.Show();
+                this.Close();
             }
             else
             {

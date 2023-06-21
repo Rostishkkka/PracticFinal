@@ -9,48 +9,57 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         WindowStartupLocation="CenterScreen"
-        Background="Gray">
+        Background="Gray"
+        MinWidth="800" MinHeight="450">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Добавить" Background="Transparent" 
-                        Margin="5, 1"/>
-                <Button Content="Выйти из аккаунта" Background="Transparent" 
-                        Margin="560, 1"/>
-            </StackPanel>
-        </Grid>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-           
-            <TextBox Grid.Column="0"  Width="170"
-                         VerticalAlignment="Center"/>
-            <TextBox Grid.Column="1" Width="170"
-                         VerticalAlignment="Center"/>
-            <ui:SimpleStackPanel Orientation="Horizontal" Grid.Column="2"
-                                 Spacing="5">
-                <Label Content="c" VerticalAlignment="Center"/>
-                <DatePicker VerticalAlignment="Center"/>
-                <Label Content="до" VerticalAlignment="Center"/>
-                <DatePicker VerticalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center"
+                    Margin="10 0 0 0">
+            <Button Content="Добавить"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 10 0">
+            <Button Content="Выйти из аккаунта"
+                    x:Name="SignOutButton"
+                    Click="SignOutButton_Click"/>
+        </StackPanel>
+        <ui:SimpleStackPanel Grid.Row="1" 
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Orientation="Horizontal"
+                             Spacing="30">
+            <TextBox Width="130"
+                     ui:ControlHelper.PlaceholderText=""/>
+            <TextBox Width="130"/>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 VerticalAlignment="Center"
+                                 Spacing="10">
+                <Label Content="С:" 
+                       VerticalAlignment="Center"/>
+                <DatePicker/>
+                <Label Content="До:"
+                       VerticalAlignment="Center"/>
+                <DatePicker/>
             </ui:SimpleStackPanel>
-            <ComboBox Grid.Column="3"/>
-        </Grid>
-
+            <ComboBox Width="130"/>
+        </ui:SimpleStackPanel>
         <Grid Grid.Row="2">
-            <DataGrid>
-                
+            <DataGrid Margin="10"
+                      FontSize="20"
+                      BorderThickness="1"
+                      BorderBrush="Black"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      IsReadOnly="True"
+                      x:Name="MainDataGrid"
+                      HorizontalAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Disabled">
             </DataGrid>
         </Grid>
     </Grid>
