@@ -1,0 +1,63 @@
+﻿<Window x:Class="TaskLog.ComponentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskLog"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        mc:Ignorable="d"
+        Background="Gray"
+        WindowStartupLocation="CenterScreen"
+        MinWidth="800" MinHeight="450"
+        Title="ComponentWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Center"
+                    Margin="10 0 0 0">
+            <Button Content="Назад"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Center"
+                    HorizontalAlignment="Right"
+                    Margin="0 0 10 0">
+            <Button Content="Добавить"
+                    x:Name="SignOutButton"
+                    />
+        </StackPanel>
+        <ui:SimpleStackPanel Grid.Row="1" 
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Center"
+                             Orientation="Horizontal"
+                             Spacing="30">
+            <TextBox Width="130"
+                     ui:ControlHelper.PlaceholderText=""/>
+            <TextBox Width="130"/>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 VerticalAlignment="Center"
+                                 Spacing="10">
+                <TextBox Width="130"
+                     ui:ControlHelper.PlaceholderText=""/>
+            </ui:SimpleStackPanel>
+            <TextBox Width="130"
+                     ui:ControlHelper.PlaceholderText=""/>
+        </ui:SimpleStackPanel>
+        <Grid Grid.Row="2">
+            <DataGrid Margin="10"
+                      FontSize="20"
+                      BorderThickness="1"
+                      BorderBrush="Black"
+                      CanUserAddRows="False"
+                      CanUserDeleteRows="False"
+                      CanUserReorderColumns="False"
+                      IsReadOnly="True"
+                      x:Name="MainDataGrid"
+                      HorizontalAlignment="Stretch"
+                      HorizontalScrollBarVisibility="Disabled">
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
