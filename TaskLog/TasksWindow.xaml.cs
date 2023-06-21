@@ -34,7 +34,7 @@ namespace TaskLog
                 DbUtils.db.Components.FirstOrDefault(x => x.CompId == p.CompId).CompOemName,
                 DbUtils.db.Users.FirstOrDefault(x => x.UserId == p.UserId).UserName,
                 DateTime = $"{DbUtils.db.EventLog.FirstOrDefault(x => x.TaskId == p.TaskId).EventTimestamp:f}",
-                DbUtils.db.EventLog.FirstOrDefault(x => x.TaskId == p.TaskId).EventType
+                DbUtils.db.EventLog.Where(x => x.TaskId == p.TaskId).OrderByDescending(x => x.EventTimestamp).FirstOrDefault().EventType
             }).ToList();
         }
 
