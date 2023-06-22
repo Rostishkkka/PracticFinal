@@ -57,5 +57,24 @@ namespace TaskLog
         {
             FillDataMainGrid();
         }
+
+        private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var cellInfo = MainDataGrid.SelectedCells[0];
+            int content = Convert.ToInt16((cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text);
+            var table = DbUtils.db.Tasks.Where(x => x.TaskId == content).FirstOrDefault();
+            if (table != null) 
+            {
+                TaskViewWindow taskViewWindow = new TaskViewWindow(table);
+                taskViewWindow.ShowDialog();
+                RefreshButton_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("error");
+                RefreshButton_Click(sender, e);
+                return;
+            }
+        }
     }
 }

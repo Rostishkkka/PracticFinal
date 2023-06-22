@@ -63,9 +63,7 @@ namespace TaskLog.Entities
             {
                 entity.HasKey(e => e.EventId);
 
-                entity.Property(e => e.EventId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("EVENT_ID");
+                entity.Property(e => e.EventId).HasColumnName("EVENT_ID");
 
                 entity.Property(e => e.EventTimestamp)
                     .HasColumnType("datetime")

@@ -45,7 +45,7 @@ namespace TaskLog
                         return "Прошивка";
                     }
             }
-            return $"None";
+            return $"{name}";
         }
     }
 }

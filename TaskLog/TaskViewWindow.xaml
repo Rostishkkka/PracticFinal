@@ -1,0 +1,83 @@
+﻿<Window x:Class="TaskLog.TaskViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskLog"
+        mc:Ignorable="d"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="Gray"
+        FontSize="15"
+        Title="TaskViewWindow" Height="600" Width="450">
+    <Grid>
+        <ui:SimpleStackPanel Spacing="10"
+                             Margin="20">
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Дата создания: "/>
+                <TextBlock x:Name="TimeStampTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Создатель:"/>
+                <TextBlock x:Name="TaskCreatorTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Статус:"/>
+                <ComboBox x:Name="TaskStatusComboBox"
+                          Width="200">
+                    <TextBlock Text="Создано"/>
+                    <TextBlock Text="В работе"/>
+                    <TextBlock Text="Ожидает запчастей"/>
+                    <TextBlock Text="Завершено"/>
+                </ComboBox>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Spacing="10">
+                <TextBlock Text="Описание:"/>
+                <RichTextBox x:Name="TaskDescrTextBox"
+                             MaxHeight="150"
+                             Height="150"/>
+            </ui:SimpleStackPanel>
+            <TextBlock VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       Text="Компонент"
+                       FontSize="30"
+                       FontWeight="SemiBold"/>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="ID:"/>
+                <TextBlock Name="IdComponentTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Версия:"/>
+                <TextBlock x:Name="VerComponentTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Название:"/>
+                <TextBlock x:Name="NameComponentTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Версия ПО:"/>
+                <TextBlock x:Name="SwVerComponentTB"/>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel Orientation="Horizontal"
+                                 Spacing="10">
+                <TextBlock Text="Серийный номер:"/>
+                <TextBlock x:Name="SerialNumberTB"/>
+            </ui:SimpleStackPanel>
+            <Button VerticalAlignment="Bottom"
+                    HorizontalAlignment="Center"
+                    Content="Сохранить"
+                    FontSize="15"
+                    x:Name="SaveButton"
+                    Click="SaveButton_Click"/>
+        </ui:SimpleStackPanel> 
+    </Grid>
+</Window>
