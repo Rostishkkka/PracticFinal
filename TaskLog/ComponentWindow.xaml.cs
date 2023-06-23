@@ -29,13 +29,13 @@ namespace TaskLog
         private void AddComponentButton_Click(object sender, RoutedEventArgs e)
         {
             AddComponentWindow addComponentWindow = new AddComponentWindow();
-            addComponentWindow.Show();
-            this.Close();
+            addComponentWindow.ShowDialog();
         }
         public void FillDataMainGrid()
         {
             MainDataGrid.ItemsSource = DbUtils.db.Components.Select(p => new
             {
+                p.CompId,
                 p.CompOemId,
                 p.CompOemVer,
                 p.CompOemName,
@@ -48,6 +48,25 @@ namespace TaskLog
             foreach (var col in MainDataGrid.Columns)
             {
                 col.Header = TranslatorForDataGridColumns.Translate(col.Header.ToString());
+            }
+        }
+
+        private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var cellInfo = MainDataGrid.SelectedCells[0];
+            int content = Convert.ToInt16((cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text);
+            var table = DbUtils.db.Components.Where(x => x.CompId == content).FirstOrDefault();
+            if(table != null)
+            {
+                AddTaskWindow addTaskWindow = new AddTaskWindow(table);
+                addTaskWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("error");
+                FillDataMainGrid();
+                return;
             }
         }
     }

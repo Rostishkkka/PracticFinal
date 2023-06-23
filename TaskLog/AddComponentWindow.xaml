@@ -37,12 +37,6 @@
                     Background="DarkGray"
                     x:Name="CreateButton"
                     Click="CreateButton_Click"/>
-            <Button Width="200"
-                    Content="Назад"
-                    FontWeight="SemiBold"
-                    Background="DarkGray"
-                    x:Name="PreviousButton"
-                    Click="PreviousButton_Click"/>
         </ui:SimpleStackPanel>
     </Grid>
 </Window>

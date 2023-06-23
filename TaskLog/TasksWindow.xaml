@@ -19,7 +19,9 @@
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center"
                     Margin="10 0 0 0" Orientation="Horizontal">
-            <Button Content="Добавить"/>
+            <Button Content="Добавить"
+                    x:Name="AddTaskButton"
+                    Click="AddTaskButton_Click"/>
             <Button Content="Refresh"
                     Margin="20 0 0 0"
                     x:Name="RefreshButton"

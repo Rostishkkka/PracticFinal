@@ -63,13 +63,6 @@ namespace TaskLog
                 MessageBox.Show("Компонент успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
-            PreviousButton_Click(sender, e);
-        }
-
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            ComponentWindow componentWindow = new ComponentWindow();
-            componentWindow.Show();
             this.Close();
         }
     }

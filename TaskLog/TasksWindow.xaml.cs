@@ -20,6 +20,7 @@ namespace TaskLog
     /// </summary>
     public partial class TasksWindow : Window
     {
+        public long UserId { get; set; }
         public TasksWindow()
         {
             InitializeComponent();
@@ -75,6 +76,14 @@ namespace TaskLog
                 RefreshButton_Click(sender, e);
                 return;
             }
+        }
+
+        private void AddTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTaskWindow addTaskWindow = new AddTaskWindow();
+            addTaskWindow.Show();
+            addTaskWindow.UserId = UserId;
+            this.Close();
         }
     }
 }

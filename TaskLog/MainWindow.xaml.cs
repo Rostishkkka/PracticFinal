@@ -22,6 +22,7 @@ namespace TaskLog
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Users currentUser;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace TaskLog
 
         public bool LoginValidation(string email, string password)
         {
-            Users currentUser = DbUtils.db.Users.FirstOrDefault(x => x.UserEmail == email);
+            currentUser = DbUtils.db.Users.FirstOrDefault(x => x.UserEmail == email);
             if(VerifyHashedPassword(currentUser.HashedPass, password))
             {
                 return true;
@@ -81,6 +82,7 @@ namespace TaskLog
             {
                 TasksWindow tasksWindow = new TasksWindow();
                 tasksWindow.Show();
+                tasksWindow.UserId = currentUser.UserId;
                 this.Close();
             }
             else
