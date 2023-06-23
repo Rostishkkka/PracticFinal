@@ -18,9 +18,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center"
-                    Margin="10 0 0 0">
+                    Margin="10 0 0 0" Orientation="Horizontal">
             <Button Content="Назад"
                     x:Name="PreviousButton"/>
+            <Button Content="Применить фильтр"
+                    Margin="20 0 0 0"
+                    x:Name="FilteringButton"
+                    Click="FilteringButton_Click"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Right"
@@ -34,17 +38,22 @@
                              HorizontalAlignment="Center"
                              Orientation="Horizontal"
                              Spacing="30">
-            <TextBox Width="130"
-                     ui:ControlHelper.PlaceholderText=""/>
-            <TextBox Width="130"/>
+            <TextBox x:Name="OemIdBox"
+                     ui:ControlHelper.PlaceholderText="ID"
+                     Width="130"/>
+            <TextBox x:Name="OemVerBox"
+                     ui:ControlHelper.PlaceholderText="Версия" 
+                     Width="130"/>
             <ui:SimpleStackPanel Orientation="Horizontal"
                                  VerticalAlignment="Center"
                                  Spacing="10">
-                <TextBox Width="130"
-                     ui:ControlHelper.PlaceholderText=""/>
+                <TextBox x:Name="OemNameBox"
+                    ui:ControlHelper.PlaceholderText="Название"
+                    Width="130"/>
             </ui:SimpleStackPanel>
-            <TextBox Width="130"
-                     ui:ControlHelper.PlaceholderText=""/>
+            <TextBox x:Name="SwVerBox"
+                     ui:ControlHelper.PlaceholderText="Прошивка"
+                     Width="130"/>
         </ui:SimpleStackPanel>
         <Grid Grid.Row="2">
             <DataGrid Margin="10"
