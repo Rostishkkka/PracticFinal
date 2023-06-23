@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Castle.Components.DictionaryAdapter.Xml;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +26,8 @@ namespace TaskLog
         {
             InitializeComponent();
             FillDataMainGrid();
+            dateFromBox.DisplayDateEnd = DateTime.Now;
+            dateToBox.DisplayDateEnd = DateTime.Now;
         }
 
         public void FillDataMainGrid()
@@ -35,6 +39,37 @@ namespace TaskLog
                 DbUtils.db.Users.FirstOrDefault(x => x.UserId == p.UserId).UserName,
                 DateTime = $"{DbUtils.db.EventLog.FirstOrDefault(x => x.TaskId == p.TaskId).EventTimestamp:f}",
                 DbUtils.db.EventLog.Where(x => x.TaskId == p.TaskId).OrderByDescending(x => x.EventTimestamp).FirstOrDefault().EventType
+            }).ToList();
+        }
+
+        private void FilteringButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dataTasks = DbUtils.db.Tasks.Select(p => new
+            {
+                p.TaskId,
+                DbUtils.db.Components.FirstOrDefault(x => x.CompId == p.CompId).CompOemName,
+                DbUtils.db.Users.FirstOrDefault(x => x.UserId == p.UserId).UserName,
+                DateTimeNotFormat = DbUtils.db.EventLog.FirstOrDefault(x => x.TaskId == p.TaskId).EventTimestamp,
+                DbUtils.db.EventLog.Where(x => x.TaskId == p.TaskId).OrderByDescending(x => x.EventTimestamp).FirstOrDefault().EventType
+            });
+
+            if(!componentBox.Text.IsNullOrEmpty())
+                dataTasks = dataTasks.Where(w => w.CompOemName == componentBox.Text);
+            if (!creatorBox.Text.IsNullOrEmpty())
+                dataTasks = dataTasks.Where(w => w.UserName.Contains(creatorBox.Text));
+            if (!dateFromBox.Text.IsNullOrEmpty())
+                dataTasks = dataTasks.Where(w => w.DateTimeNotFormat.Date >= Convert.ToDateTime(dateFromBox.Text).Date);
+            if (!dateToBox.Text.IsNullOrEmpty())
+                dataTasks = dataTasks.Where(w => w.DateTimeNotFormat.Date <= Convert.ToDateTime(dateToBox.Text).Date);
+            if (!typeBox.Text.IsNullOrEmpty())
+                dataTasks = dataTasks.Where(w => w.EventType == typeBox.Text);
+
+            MainDataGrid.ItemsSource = dataTasks.Select(p => new {
+                p.TaskId,
+                p.CompOemName,
+                p.UserName,
+                DateTime = $"{p.DateTimeNotFormat:f}",
+                p.EventType
             }).ToList();
         }
 
@@ -53,11 +88,6 @@ namespace TaskLog
             }
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            FillDataMainGrid();
-        }
-
         private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var cellInfo = MainDataGrid.SelectedCells[0];
@@ -67,12 +97,12 @@ namespace TaskLog
             {
                 TaskViewWindow taskViewWindow = new TaskViewWindow(table);
                 taskViewWindow.ShowDialog();
-                RefreshButton_Click(sender, e);
+                FillDataMainGrid();
             }
             else
             {
                 MessageBox.Show("error");
-                RefreshButton_Click(sender, e);
+                FillDataMainGrid();
                 return;
             }
         }
