@@ -40,6 +40,7 @@
                 <TextBlock Text="Описание:"/>
                 <RichTextBox x:Name="TaskDescrTextBox"
                              MaxHeight="150"
+                             ui:ControlHelper.PlaceholderText="Введите описание"
                              Height="150"/>
             </ui:SimpleStackPanel>
             <TextBlock VerticalAlignment="Center"

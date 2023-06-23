@@ -64,8 +64,16 @@ namespace TaskLog
             string TaskDescr = textRange.Text.Replace("\r\n", string.Empty);
             if(TaskDescr != task.TaskDescr)
             {
-                task.TaskDescr = TaskDescr;
-                DbUtils.db.SaveChanges();
+                if (TaskDescr.Length <= 512)
+                {
+                    task.TaskDescr = TaskDescr;
+                    DbUtils.db.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Текст описания не должен превышать 512 символов", "Предупреждение",MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
             if (CurrentEventType != TaskStatusComboBox.Text)
             {
