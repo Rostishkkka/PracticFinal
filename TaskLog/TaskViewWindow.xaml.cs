@@ -21,6 +21,7 @@ namespace TaskLog
     public partial class TaskViewWindow : Window
     {
         private long IdCurrentTask;
+        private string CurrentEventType;
         public TaskViewWindow(Tasks task)
         {
             InitializeComponent();
@@ -49,6 +50,7 @@ namespace TaskLog
                     .FirstOrDefault().EventType)
                 {
                     TaskStatusComboBox.SelectedValue = item;
+                    CurrentEventType = item.Text;
                     break;
                 }
             }
@@ -56,23 +58,34 @@ namespace TaskLog
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            try
+            Tasks task = DbUtils.db.Tasks.FirstOrDefault(x => x.TaskId == IdCurrentTask);
+            TextRange textRange = new TextRange(TaskDescrTextBox.Document.ContentStart
+                        , TaskDescrTextBox.Document.ContentEnd);
+            string TaskDescr = textRange.Text.Replace("\r\n", string.Empty);
+            if(TaskDescr != task.TaskDescr)
             {
-                //Сделать изменение описания
-                EventLog eventLog = new EventLog();
-                eventLog.EventType = TaskStatusComboBox.Text;
-                eventLog.EventTimestamp = DateTime.Now;
-                eventLog.TaskId = IdCurrentTask;
-                eventLog.UserId = 1;
-                DbUtils.db.EventLog.Add(eventLog);
+                task.TaskDescr = TaskDescr;
                 DbUtils.db.SaveChanges();
-                this.Close();
             }
-            catch
+            if (CurrentEventType != TaskStatusComboBox.Text)
             {
-                MessageBox.Show("error");
-                return;
+                try
+                {
+                    EventLog eventLog = new EventLog();
+                    eventLog.EventType = TaskStatusComboBox.Text;
+                    eventLog.EventTimestamp = DateTime.Now;
+                    eventLog.TaskId = IdCurrentTask;
+                    eventLog.UserId = 1;
+                    DbUtils.db.EventLog.Add(eventLog);
+                    DbUtils.db.SaveChanges();
+                }
+                catch
+                {
+                    MessageBox.Show("error");
+                    return;
+                }
             }
+            this.Close();
         }
     }
 }
