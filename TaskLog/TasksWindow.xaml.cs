@@ -90,6 +90,7 @@ namespace TaskLog
 
         private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (MainDataGrid.SelectedCells.Count() == 0) return; 
             var cellInfo = MainDataGrid.SelectedCells[0];
             int content = Convert.ToInt16((cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text);
             var table = DbUtils.db.Tasks.Where(x => x.TaskId == content).FirstOrDefault();
