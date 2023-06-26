@@ -25,7 +25,7 @@ namespace TaskLog.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-QFRCAHK;" +
+                optionsBuilder.UseSqlServer("Data Source=DEREKOVSKY\\SQLEXPRESS;"+
                     "Initial Catalog=TaskLog;"+
                     "Integrated Security=True;"+
                     "Trust Server Certificate=True;"+
@@ -95,9 +95,7 @@ namespace TaskLog.Entities
             {
                 entity.HasKey(e => e.TaskId);
 
-                entity.Property(e => e.TaskId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("TASK_ID");
+                entity.Property(e => e.TaskId).HasColumnName("TASK_ID");
 
                 entity.Property(e => e.Comments)
                     .HasMaxLength(512)
@@ -134,9 +132,7 @@ namespace TaskLog.Entities
             {
                 entity.HasKey(e => e.UserId);
 
-                entity.Property(e => e.UserId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("USER_ID");
+                entity.Property(e => e.UserId).HasColumnName("USER_ID");
 
                 entity.Property(e => e.HashedPass)
                     .IsRequired()

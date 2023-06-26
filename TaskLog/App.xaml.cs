@@ -13,5 +13,6 @@ namespace TaskLog
     /// </summary>
     public partial class App : Application
     {
+        public long UserId { get; set; }
     }
 }

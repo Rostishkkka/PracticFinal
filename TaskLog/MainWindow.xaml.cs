@@ -22,7 +22,7 @@ namespace TaskLog
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Users currentUser;
+        public Users currentUser;
         public MainWindow()
         {
             InitializeComponent();
@@ -80,9 +80,10 @@ namespace TaskLog
         {
             if(LoginValidation(EmailSingInTextBox.Text, PasswordSignInPassBox.Password))
             {
+                App app = (App)Application.Current;
+                app.UserId = currentUser.UserId;
                 TasksWindow tasksWindow = new TasksWindow();
                 tasksWindow.Show();
-                tasksWindow.UserId = currentUser.UserId;
                 this.Close();
             }
             else

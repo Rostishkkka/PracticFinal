@@ -11,10 +11,10 @@ namespace TaskLog.Entities
         }
 
         public long CompId { get; set; }
-        public string? CompOemId { get; set; }
-        public string? CompOemVer { get; set; }
+        public string CompOemId { get; set; }
+        public string CompOemVer { get; set; }
         public string CompOemName { get; set; }
-        public string? SwVer { get; set; }
+        public string SwVer { get; set; }
 
         public virtual ICollection<Tasks> Tasks { get; set; }
     }

@@ -9,6 +9,7 @@
         xmlns:ui="http://schemas.modernwpf.com/2019"
         ui:WindowHelper.UseModernWindowStyle="True"
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Background="Gray"
         MinWidth="800" MinHeight="450">
     <Grid>
@@ -22,10 +23,14 @@
             <Button Content="Добавить"
                     x:Name="AddTaskButton"
                     Click="AddTaskButton_Click"/>
-            <Button Content="Refresh"
+            <Button Content="Применить фильтр"
                     Margin="20 0 0 0"
                     x:Name="FilteringButton"
                     Click="FilteringButton_Click"/>
+            <Button Content="Очистить фильтры"
+                    Margin="20 0 0 0"
+                    x:Name="ClearFiltersButton"
+                    Click="ClearFiltersButton_Click"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Right"

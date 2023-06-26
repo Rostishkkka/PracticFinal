@@ -48,6 +48,7 @@ namespace TaskLog
         {
             var dataComponents = DbUtils.db.Components.Select(p => new
             {
+                p.CompId,
                 p.CompOemId,
                 p.CompOemVer,
                 p.CompOemName,
@@ -55,13 +56,13 @@ namespace TaskLog
             });
 
             if (!OemIdBox.Text.IsNullOrEmpty())
-                dataComponents = dataComponents.Where(w => w.CompOemId == OemIdBox.Text);
+                dataComponents = dataComponents.Where(w => w.CompOemId.Contains(OemIdBox.Text));
             if (!OemVerBox.Text.IsNullOrEmpty())
-                dataComponents = dataComponents.Where(w => w.CompOemVer == OemVerBox.Text);
+                dataComponents = dataComponents.Where(w => w.CompOemVer.Contains(OemVerBox.Text));
             if (!OemNameBox.Text.IsNullOrEmpty())
-                dataComponents = dataComponents.Where(w => w.CompOemName == OemNameBox.Text);
+                dataComponents = dataComponents.Where(w => w.CompOemName.Contains(OemNameBox.Text));
             if (!SwVerBox.Text.IsNullOrEmpty())
-                dataComponents = dataComponents.Where(w => w.SwVer == SwVerBox.Text);
+                dataComponents = dataComponents.Where(w => w.SwVer.Contains(SwVerBox.Text));
 
             MainDataGrid.ItemsSource = dataComponents.ToList();
 
@@ -78,6 +79,7 @@ namespace TaskLog
 
         private void MainDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (MainDataGrid.SelectedCells.Count() == 0) return;
             var cellInfo = MainDataGrid.SelectedCells[0];
             int content = Convert.ToInt16((cellInfo.Column.GetCellContent(cellInfo.Item) as TextBlock).Text);
             var table = DbUtils.db.Components.Where(x => x.CompId == content).FirstOrDefault();
@@ -93,6 +95,22 @@ namespace TaskLog
                 FillDataMainGrid();
                 return;
             }
+        }
+
+        private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            OemIdBox.Text = "";
+            OemVerBox.Text = "";
+            OemNameBox.Text = "";
+            SwVerBox.Text = "";
+            FillDataMainGrid();
+        }
+
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddTaskWindow addTaskWindow = new AddTaskWindow();
+            addTaskWindow.Show();
+            this.Close();
         }
     }
 }

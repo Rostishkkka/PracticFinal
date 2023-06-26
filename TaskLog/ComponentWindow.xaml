@@ -8,6 +8,7 @@
         ui:WindowHelper.UseModernWindowStyle="True"
         mc:Ignorable="d"
         Background="Gray"
+        WindowState="Maximized"
         WindowStartupLocation="CenterScreen"
         MinWidth="800" MinHeight="450"
         Title="ComponentWindow" Height="450" Width="800">
@@ -20,11 +21,16 @@
         <StackPanel VerticalAlignment="Center"
                     Margin="10 0 0 0" Orientation="Horizontal">
             <Button Content="Назад"
-                    x:Name="PreviousButton"/>
+                    x:Name="PreviousButton"
+                    Click="PreviousButton_Click"/>
             <Button Content="Применить фильтр"
                     Margin="20 0 0 0"
                     x:Name="FilteringButton"
                     Click="FilteringButton_Click"/>
+            <Button Content="Очистить фильтры"
+                    Margin="20 0 0 0"
+                    x:Name="ClearFiltersButton"
+                    Click="ClearFiltersButton_Click"/>
         </StackPanel>
         <StackPanel VerticalAlignment="Center"
                     HorizontalAlignment="Right"

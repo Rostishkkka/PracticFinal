@@ -34,7 +34,7 @@ namespace TaskLog
                     }
                 case "CompOemId":
                     {
-                        return "Id компонента";
+                        return "OEM Id компонента";
                     }
                 case "CompOemVer":
                     {
@@ -43,6 +43,10 @@ namespace TaskLog
                 case "SwVer":
                     {
                         return "Прошивка";
+                    }
+                case "CompId":
+                    {
+                        return "";
                     }
             }
             return $"{name}";

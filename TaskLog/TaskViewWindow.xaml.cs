@@ -20,11 +20,13 @@ namespace TaskLog
     /// </summary>
     public partial class TaskViewWindow : Window
     {
-        private long IdCurrentTask;
+        private long IdCurrentTask, UserId;
         private string CurrentEventType;
         public TaskViewWindow(Tasks task)
         {
             InitializeComponent();
+            App app = (App)Application.Current;
+            UserId = app.UserId;
             IdCurrentTask = task.TaskId;
             ValueOfEventTypeToComboBox(task);
             FillTextBlocks(task);
@@ -83,7 +85,7 @@ namespace TaskLog
                     eventLog.EventType = TaskStatusComboBox.Text;
                     eventLog.EventTimestamp = DateTime.Now;
                     eventLog.TaskId = IdCurrentTask;
-                    eventLog.UserId = 1;
+                    eventLog.UserId = UserId;
                     DbUtils.db.EventLog.Add(eventLog);
                     DbUtils.db.SaveChanges();
                 }

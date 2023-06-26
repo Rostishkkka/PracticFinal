@@ -20,8 +20,7 @@ namespace TaskLog
     /// </summary>
     public partial class AddTaskWindow : Window
     {
-        public long UserId { get; set; }
-        private long CurrentCompId;
+        private long CurrentCompId, UserId;
         public AddTaskWindow()
         {
             InitializeComponent();
@@ -30,6 +29,8 @@ namespace TaskLog
         public AddTaskWindow(Components component)
         {
             InitializeComponent();
+            App app = (App)Application.Current;
+            UserId = app.UserId;
             IdComponentTB.Text = component.CompOemId;
             VerComponentTB.Text = component.CompOemVer;
             NameComponentTB.Text = component.CompOemName;
@@ -58,14 +59,23 @@ namespace TaskLog
                     task.CompId = CurrentCompId;
                     task.TaskDescr = TaskDescr;
                     task.CompSn = SerialNumberTextBox.Text;
-                    task.UserId = 1;
+                    task.UserId = UserId;
                     DbUtils.db.Tasks.Add(task);
-                    //DbUtils.db.SaveChanges();
+                    DbUtils.db.SaveChanges();
+                    EventLog eventLog = new EventLog();
+                    eventLog.EventType = "Создано";
+                    eventLog.EventTimestamp = DateTime.Now;
+                    eventLog.TaskId = task.TaskId;
+                    eventLog.UserId = task.UserId;
+                    DbUtils.db.EventLog.Add(eventLog);
+                    DbUtils.db.SaveChanges();
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
+                TasksWindow tasksWindow = new TasksWindow();
+                tasksWindow.Show();
                 this.Close();
             }
             else

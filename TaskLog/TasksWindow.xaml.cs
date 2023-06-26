@@ -22,7 +22,6 @@ namespace TaskLog
     /// </summary>
     public partial class TasksWindow : Window
     {
-        public long UserId { get; set; }
         public TasksWindow()
         {
             InitializeComponent();
@@ -113,8 +112,17 @@ namespace TaskLog
         {
             AddTaskWindow addTaskWindow = new AddTaskWindow();
             addTaskWindow.Show();
-            addTaskWindow.UserId = UserId;
             this.Close();
+        }
+
+        private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)
+        {
+            componentBox.Text = "";
+            creatorBox.Text = "";
+            dateFromBox.Text = "";
+            dateToBox.Text = "";
+            typeBox.SelectedIndex = -1;
+            FillDataMainGrid();
         }
     }
 }
