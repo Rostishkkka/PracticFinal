@@ -65,5 +65,10 @@ namespace TaskLog
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
             this.Close();
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,29 +22,28 @@ namespace TaskLog
     public partial class AddTaskWindow : Window
     {
         private long CurrentCompId, UserId;
-        public AddTaskWindow()
-        {
-            InitializeComponent();
-        }
 
-        public AddTaskWindow(Components component)
+        public AddTaskWindow()
         {
             InitializeComponent();
             App app = (App)Application.Current;
             UserId = app.UserId;
-            IdComponentTB.Text = component.CompOemId;
-            VerComponentTB.Text = component.CompOemVer;
-            NameComponentTB.Text = component.CompOemName;
-            SwVerComponentTB.Text = component.SwVer;
-            CurrentCompId = component.CompId;
-            CreateButton.IsEnabled = true;
         }
 
         private void SelectComponentButton_Click(object sender, RoutedEventArgs e)
         {
             ComponentWindow componentWindow = new ComponentWindow();
-            componentWindow.Show();
-            this.Close();
+            bool? result = componentWindow.ShowDialog();
+            if(result == true) 
+            {
+                var ReturnedComponent = componentWindow.ReturnedComponent;
+                IdComponentTB.Text = ReturnedComponent.CompOemId;
+                VerComponentTB.Text = ReturnedComponent.CompOemVer;
+                NameComponentTB.Text = ReturnedComponent.CompOemName;
+                SwVerComponentTB.Text = ReturnedComponent.SwVer;
+                CurrentCompId = ReturnedComponent.CompId;
+                CreateButton.IsEnabled = true;
+            }
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -74,8 +74,7 @@ namespace TaskLog
                 {
                     MessageBox.Show(ex.ToString());
                 }
-                TasksWindow tasksWindow = new TasksWindow();
-                tasksWindow.Show();
+                this.DialogResult = true;
                 this.Close();
             }
             else
@@ -87,8 +86,7 @@ namespace TaskLog
 
         private void PreviousButton_Click(object sender, RoutedEventArgs e)
         {
-            TasksWindow tasksWindow = new TasksWindow();
-            tasksWindow.Show();
+            this.DialogResult = true;
             this.Close();
         }
     }

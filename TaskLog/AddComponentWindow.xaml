@@ -10,11 +10,15 @@
         WindowStartupLocation="CenterScreen"
         Background="Gray"
         ResizeMode="NoResize"
-        Title="AddComponentWindow" Height="450" Width="300">
+        Title="Добавление компонента" Height="450" Width="300">
     <Grid>
         <ui:SimpleStackPanel VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              Spacing="20">
+            <TextBox Width="200"
+                     MaxLength="50"
+                     ui:ControlHelper.Header="Название компонента*"
+                     x:Name="OemNameTextBox"/>
             <TextBox Width="200"
                      MaxLength="50"
                      ui:ControlHelper.Header="ID Компонента"
@@ -23,10 +27,6 @@
                      MaxLength="10"
                      ui:ControlHelper.Header="Версия компонента"
                      x:Name="OemVerTextBox"/>
-            <TextBox Width="200"
-                     MaxLength="50"
-                     ui:ControlHelper.Header="Название компонента"
-                     x:Name="OemNameTextBox"/>
             <TextBox Width="200"
                      MaxLength="10"
                      ui:ControlHelper.Header="Версия ПО"
@@ -37,6 +37,12 @@
                     Background="DarkGray"
                     x:Name="CreateButton"
                     Click="CreateButton_Click"/>
+            <Button Content="Отмена"
+                    Width="200"
+                    FontWeight="SemiBold"
+                    Background="DarkGray"
+                    x:Name="CancelButton"
+                    Click="CancelButton_Click"/>
         </ui:SimpleStackPanel>
     </Grid>
 </Window>

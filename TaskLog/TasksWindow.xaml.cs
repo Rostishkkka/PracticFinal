@@ -111,8 +111,11 @@ namespace TaskLog
         private void AddTaskButton_Click(object sender, RoutedEventArgs e)
         {
             AddTaskWindow addTaskWindow = new AddTaskWindow();
-            addTaskWindow.Show();
-            this.Close();
+            bool? Result = addTaskWindow.ShowDialog();
+            if(Result == true) 
+            {
+                FillDataMainGrid();
+            }
         }
 
         private void ClearFiltersButton_Click(object sender, RoutedEventArgs e)

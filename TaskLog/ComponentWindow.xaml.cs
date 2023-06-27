@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace TaskLog
     /// </summary>
     public partial class ComponentWindow : Window
     {
+        public Components ReturnedComponent { get; private set; }
         public ComponentWindow()
         {
             InitializeComponent();
@@ -85,8 +87,8 @@ namespace TaskLog
             var table = DbUtils.db.Components.Where(x => x.CompId == content).FirstOrDefault();
             if(table != null)
             {
-                AddTaskWindow addTaskWindow = new AddTaskWindow(table);
-                addTaskWindow.Show();
+                ReturnedComponent = table;
+                this.DialogResult = true;
                 this.Close();
             }
             else
@@ -106,11 +108,5 @@ namespace TaskLog
             FillDataMainGrid();
         }
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
-        {
-            AddTaskWindow addTaskWindow = new AddTaskWindow();
-            addTaskWindow.Show();
-            this.Close();
-        }
     }
 }
