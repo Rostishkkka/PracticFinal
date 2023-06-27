@@ -58,6 +58,11 @@ namespace TaskLog
             }
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Tasks task = DbUtils.db.Tasks.FirstOrDefault(x => x.TaskId == IdCurrentTask);

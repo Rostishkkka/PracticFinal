@@ -15,7 +15,7 @@ namespace TaskLog.Entities
         public string TaskDescr { get; set; }
         public string CompSn { get; set; }
         public long UserId { get; set; }
-        public string? Comments { get; set; }
+        public string Comments { get; set; }
 
         public virtual Components Comp { get; set; }
         public virtual Users User { get; set; }

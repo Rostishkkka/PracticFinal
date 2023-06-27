@@ -21,7 +21,8 @@
         <StackPanel VerticalAlignment="Center"
                     Margin="10 0 0 0" Orientation="Horizontal">
             <Button Content="Назад"
-                    x:Name="PreviousButton"/>
+                    x:Name="PreviousButton"
+                    Click="PreviousButton_Click"/>
             <Button Content="Применить фильтр"
                     Margin="20 0 0 0"
                     x:Name="FilteringButton"

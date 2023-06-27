@@ -63,6 +63,7 @@ namespace TaskLog
                 MessageBox.Show("Компонент успешно добавлен", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            this.DialogResult = true;
             this.Close();
         }
 

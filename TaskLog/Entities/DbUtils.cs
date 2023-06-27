@@ -17,7 +17,7 @@ namespace TaskLog.Entities
             {
                 db = new Db();
             }    
-            catch { MessageBox.Show("Error of connection to database", MessageBoxButton.OK.ToString()); }
+            catch(Exception) { MessageBox.Show("Error of connection to database", MessageBoxButton.OK.ToString()); }
         
         }
     }

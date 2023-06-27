@@ -78,18 +78,25 @@ namespace TaskLog
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            if(LoginValidation(EmailSingInTextBox.Text, PasswordSignInPassBox.Password))
+            try
             {
-                App app = (App)Application.Current;
-                app.UserId = currentUser.UserId;
-                TasksWindow tasksWindow = new TasksWindow();
-                tasksWindow.Show();
-                this.Close();
+                if (LoginValidation(EmailSingInTextBox.Text, PasswordSignInPassBox.Password))
+                {
+                    App app = (App)Application.Current;
+                    app.UserId = currentUser.UserId;
+                    TasksWindow tasksWindow = new TasksWindow();
+                    tasksWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Непраильный логин или пароль");
+                }
             }
-            else
+            catch(Exception)
             {
-                MessageBox.Show("Ошибка входа");
-            }
+                MessageBox.Show("Ошибка подключения к БД");
+            }    
         }
     }
 }

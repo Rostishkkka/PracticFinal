@@ -32,7 +32,11 @@ namespace TaskLog
         private void AddComponentButton_Click(object sender, RoutedEventArgs e)
         {
             AddComponentWindow addComponentWindow = new AddComponentWindow();
-            addComponentWindow.ShowDialog();
+            bool? Result = addComponentWindow.ShowDialog();
+            if (Result == true) 
+            {
+                FillDataMainGrid();
+            }
         }
         public void FillDataMainGrid()
         {
@@ -108,5 +112,9 @@ namespace TaskLog
             FillDataMainGrid();
         }
 
+        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

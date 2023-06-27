@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Json;
+using System.Text.Json.Serialization;
+using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Newtonsoft.Json;
 
 namespace TaskLog.Entities
 {
@@ -25,12 +30,36 @@ namespace TaskLog.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer("Data Source=DEREKOVSKY\\SQLEXPRESS;"+
-                    "Initial Catalog=TaskLog;"+
-                    "Integrated Security=True;"+
-                    "Trust Server Certificate=True;"+
-                    "Command Timeout=300;"+
-                    "MultipleActiveResultSets=True");
+                optionsBuilder.UseSqlServer(GetConnectionString());
+            }
+        }
+
+        private string GetConnectionString()
+        {
+            string dataSource = GetDataSource();
+            string connectionString = $"Data Source={dataSource};" +
+                               "Initial Catalog=TaskLog;" +
+                               "Integrated Security=True;" +
+                               "Trust Server Certificate=True;" +
+                               "Command Timeout=300;" +
+                               "MultipleActiveResultSets=True";
+            return connectionString;
+        }
+
+        private string GetDataSource()
+        {
+            string filePath = Environment.CurrentDirectory + @"\dataSource\dataSource.json";
+            try
+            {
+                string json = File.ReadAllText(filePath);
+                dynamic data = JsonConvert.DeserializeObject(json);
+                string dataSource = data.DataSource;
+                return dataSource;
+            }
+            catch(IOException) 
+            {
+                MessageBox.Show($"Ошибка чтения файла {filePath}");
+                throw;
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

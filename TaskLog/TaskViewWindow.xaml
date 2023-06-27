@@ -73,12 +73,19 @@
                 <TextBlock Text="Серийный номер:"/>
                 <TextBlock x:Name="SerialNumberTB"/>
             </ui:SimpleStackPanel>
-            <Button VerticalAlignment="Bottom"
-                    HorizontalAlignment="Center"
-                    Content="Сохранить"
-                    FontSize="15"
-                    x:Name="SaveButton"
-                    Click="SaveButton_Click"/>
+            <ui:SimpleStackPanel VerticalAlignment="Bottom"
+                                 HorizontalAlignment="Center"
+                                 Spacing="10"
+                                 Orientation="Horizontal">
+                <Button Content="Сохранить"
+                        FontSize="15"
+                        x:Name="SaveButton"
+                        Click="SaveButton_Click"/>
+                <Button Content="Отмена"
+                        FontSize="15"
+                        x:Name="CancelButton"
+                        Click="CancelButton_Click"/>
+            </ui:SimpleStackPanel>
         </ui:SimpleStackPanel> 
     </Grid>
 </Window>
