@@ -10,7 +10,7 @@
         WindowStartupLocation="CenterScreen"
         Background="Gray"
         ResizeMode="NoResize"
-        Title="Добавление компонента" Height="450" Width="300">
+        Title="Создание компонента" Height="450" Width="300">
     <Grid>
         <ui:SimpleStackPanel VerticalAlignment="Center"
                              HorizontalAlignment="Center"
