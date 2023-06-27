@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         Background="Gray"
         FontSize="15"
-        Title="TaskViewWindow" Height="600" Width="450">
+        Title="Просмотр задачи" Height="600" Width="450">
     <Grid>
         <ui:SimpleStackPanel Spacing="10"
                              Margin="20">
