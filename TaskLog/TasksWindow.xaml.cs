@@ -54,7 +54,7 @@ namespace TaskLog
             });
 
             if(!componentBox.Text.IsNullOrEmpty())
-                dataTasks = dataTasks.Where(w => w.CompOemName == componentBox.Text);
+                dataTasks = dataTasks.Where(w => w.CompOemName.Contains(componentBox.Text));
             if (!creatorBox.Text.IsNullOrEmpty())
                 dataTasks = dataTasks.Where(w => w.UserName.Contains(creatorBox.Text));
             if (!dateFromBox.Text.IsNullOrEmpty())
