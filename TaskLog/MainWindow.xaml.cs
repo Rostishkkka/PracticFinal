@@ -90,7 +90,7 @@ namespace TaskLog
                 }
                 else
                 {
-                    MessageBox.Show("Непраильный логин или пароль");
+                    MessageBox.Show("Неправильный логин или пароль");
                 }
             }
             catch(Exception)
