@@ -30,20 +30,8 @@ namespace TaskLog.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer(GetConnectionString());
+                optionsBuilder.UseSqlServer(GetDataSource());
             }
-        }
-
-        private string GetConnectionString()
-        {
-            string dataSource = GetDataSource();
-            string connectionString = $"Data Source={dataSource};" +
-                               "Initial Catalog=TaskLog;" +
-                               "Integrated Security=True;" +
-                               "Trust Server Certificate=True;" +
-                               "Command Timeout=300;" +
-                               "MultipleActiveResultSets=True";
-            return connectionString;
         }
 
         private string GetDataSource()
@@ -54,7 +42,16 @@ namespace TaskLog.Entities
                 string json = File.ReadAllText(filePath);
                 dynamic data = JsonConvert.DeserializeObject(json);
                 string dataSource = data.DataSource;
-                return dataSource;
+                string userID = data.UserID;
+                string pass = data.Password;
+                string connectionString = $"Data Source={dataSource};" +
+                               "Initial Catalog=TaskLog;" +
+                               $"User ID= {userID};" +
+                               $"Password = {pass};" +
+                               "Trust Server Certificate=True;" +
+                               "Command Timeout=300;" +
+                               "MultipleActiveResultSets=True";
+                return connectionString;
             }
             catch(IOException) 
             {
