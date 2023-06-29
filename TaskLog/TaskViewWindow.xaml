@@ -43,10 +43,9 @@
                              ui:ControlHelper.PlaceholderText="Введите описание"
                              Height="150"/>
             </ui:SimpleStackPanel>
-            <TextBlock VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Text="Компонент"
-                       FontSize="30"
+            <TextBlock Text="Компонент:"
+                       FontSize="25"
+                       HorizontalAlignment="Left"
                        FontWeight="SemiBold"/>
             <ui:SimpleStackPanel Orientation="Horizontal"
                                  Spacing="10">

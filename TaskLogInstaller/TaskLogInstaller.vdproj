@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DB4CCBA4033145F3B06B5B762364C749"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EB35804F6C2F478082CCACA07AEB09FE"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -122,6 +128,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB4CCBA4033145F3B06B5B762364C749"
+            {
+            "SourcePath" = "8:..\\..\\..\\..\\Desktop\\tasks_25495.ico"
+            "TargetName" = "8:tasks_25495.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_54149E6AC94C4288BCDB2E91FDF34A6E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EB35804F6C2F478082CCACA07AEB09FE"
             {
             "SourcePath" = "8:..\\TaskLog\\bin\\Debug\\net7.0-windows\\dataSource\\dataSource.json"
@@ -161,7 +187,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_54149E6AC94C4288BCDB2E91FDF34A6E"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\TaskLog"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -221,7 +247,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:TaskLogInstaller"
         "ProductCode" = "8:{262D18E9-C8A7-4696-90E6-C64D968CDE89}"
-        "PackageCode" = "8:{152C7599-46CD-4940-9210-4CA4DEBCF1E9}"
+        "PackageCode" = "8:{80C0692F-D0C6-40AA-814B-635DAF25025C}"
         "UpgradeCode" = "8:{D97B26D7-7F9C-4C5B-8875-D8A49C4D4FDD}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -229,12 +255,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:SIIIIIKE"
+        "Manufacturer" = "8:Schindler"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:TaskLogInstaller"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:SIIIIIKE"
+        "ARPCONTACT" = "8:Schindler"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -352,7 +378,7 @@
             "Target" = "8:_A372E74B18A24482BD670284161A3FF8"
             "Folder" = "8:_1A478FF2698D426EB307813BDFEF3026"
             "WorkingFolder" = "8:_54149E6AC94C4288BCDB2E91FDF34A6E"
-            "Icon" = "8:"
+            "Icon" = "8:_DB4CCBA4033145F3B06B5B762364C749"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F6A672ADCCF04122A332AB7B4C852BAD"
