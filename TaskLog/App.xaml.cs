@@ -13,6 +13,6 @@ namespace TaskLog
     /// </summary>
     public partial class App : Application
     {
-        public long UserId { get; set; }
+        public long UserId { get; set; } // Свойство в которое записывается значение UserID после авторизации
     }
 }

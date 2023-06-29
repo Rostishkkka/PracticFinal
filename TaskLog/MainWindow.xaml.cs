@@ -28,7 +28,7 @@ namespace TaskLog
             InitializeComponent();
         }
 
-        public bool LoginValidation(string email, string password)
+        public bool LoginValidation(string email, string password) // Функция находящая в БД пользователя с введенным email, после чего происходит рахеширование пароля из БД и его сравнение
         {
             currentUser = DbUtils.db.Users.FirstOrDefault(x => x.UserEmail == email);
             if(VerifyHashedPassword(currentUser.HashedPass, password))
@@ -38,7 +38,7 @@ namespace TaskLog
             return false;
         }
 
-        public bool VerifyHashedPassword(string hashedPassword, string password)
+        public bool VerifyHashedPassword(string hashedPassword, string password) // Функция расхеширования и сравнения паролей
         {
             byte[] buffer4;
             if (hashedPassword == null)
@@ -76,7 +76,7 @@ namespace TaskLog
             return true;
         }
 
-        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        private void SignInButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "SignInButton". Если данные введены верно и прошли все проверки, открывает окно прсомотра задач и в app.UserID помещает текущий ID пользователя из БД
         {
             try
             {

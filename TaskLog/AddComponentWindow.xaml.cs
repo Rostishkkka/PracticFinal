@@ -25,7 +25,7 @@ namespace TaskLog
             InitializeComponent();
         }
 
-        private bool CheckFillOfTextBoxes()
+        private bool CheckFillOfTextBoxes() // Функция которая проверяет на заполненность поля с именем компонента 
         {
             if(OemNameTextBox.Text.Length == 0)
             {
@@ -35,7 +35,7 @@ namespace TaskLog
             return true;
         }
 
-        private bool CheckSameComponentInDb()
+        private bool CheckSameComponentInDb() // Функция проверяет, существует ли в базе данных компонент с такими же значениями полей
         {
             if(DbUtils.db.Components.Any(x => x.CompOemId == OemIdTextBox.Text && 
                 x.CompOemVer == OemVerTextBox.Text &&
@@ -48,7 +48,7 @@ namespace TaskLog
             return true;
         }
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        private void CreateButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "CreateButton". Создает новый компонент на основе введенных значений
         {
             if (!CheckFillOfTextBoxes() || !CheckSameComponentInDb()) { return; }
             try
@@ -67,7 +67,7 @@ namespace TaskLog
             this.Close();
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "CancelButton". Закрывает это окно
         {
             this.Close();
         }

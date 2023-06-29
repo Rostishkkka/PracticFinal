@@ -8,7 +8,7 @@ namespace TaskLog
 {
     internal static class TranslatorForDataGridColumns
     {
-        public static string Translate(string name)
+        public static string Translate(string name) // Функция принимает в себя Header столбца DataGrid и через Switch возвращает в него нужное значение
         {
             switch (name) 
             {

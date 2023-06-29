@@ -32,7 +32,7 @@ namespace TaskLog
             FillTextBlocks(task);
         }
 
-        private void FillTextBlocks(Tasks task) 
+        private void FillTextBlocks(Tasks task) //  Функция заполняет TextBox данными переданного Task
         {
             TimeStampTB.Text = $"{DbUtils.db.EventLog.FirstOrDefault(x => x.TaskId == task.TaskId).EventTimestamp:F}";
             TaskCreatorTB.Text = task.User.UserName;
@@ -43,7 +43,7 @@ namespace TaskLog
             SwVerComponentTB.Text = task.Comp.SwVer.ToString();
             SerialNumberTB.Text = task.CompSn;
         }
-        private void ValueOfEventTypeToComboBox(Tasks task)
+        private void ValueOfEventTypeToComboBox(Tasks task) // Функция определения текущего статуса задачи и его отображение в ComboBox
         {
             foreach (TextBlock item in TaskStatusComboBox.Items)
             {
@@ -58,12 +58,12 @@ namespace TaskLog
             }
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void CancelButton_Click(object sender, RoutedEventArgs e) // Функция закрытия формы
         {
             this.Close();
         }
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e) // Функция сохранения изменений задачи
         {
             Tasks task = DbUtils.db.Tasks.FirstOrDefault(x => x.TaskId == IdCurrentTask);
             TextRange textRange = new TextRange(TaskDescrTextBox.Document.ContentStart

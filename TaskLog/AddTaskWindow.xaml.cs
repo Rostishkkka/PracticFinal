@@ -30,7 +30,7 @@ namespace TaskLog
             UserId = app.UserId;
         }
 
-        private void SelectComponentButton_Click(object sender, RoutedEventArgs e)
+        private void SelectComponentButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "SelectComponent". Открывает окно выбора компонента и возвращает выбранный компонент
         {
             ComponentWindow componentWindow = new ComponentWindow();
             bool? result = componentWindow.ShowDialog();
@@ -46,7 +46,7 @@ namespace TaskLog
             }
         }
 
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        private void CreateButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "CreateButton". Создает новую задачу на основе введенных значений и полученного компонента 
         {
             TextRange textRange = new TextRange(TaskDescrTextBox.Document.ContentStart
                         , TaskDescrTextBox.Document.ContentEnd);
@@ -84,7 +84,7 @@ namespace TaskLog
             }
         }
 
-        private void PreviousButton_Click(object sender, RoutedEventArgs e)
+        private void PreviousButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "PreviousButton". Закрывает это окно
         {
             this.DialogResult = true;
             this.Close();

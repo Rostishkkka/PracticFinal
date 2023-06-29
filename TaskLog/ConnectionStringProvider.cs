@@ -11,7 +11,7 @@ namespace TaskLog
 {
     public class ConnectionStringProvider
     {
-        public static string GetDataSource()
+        public static string GetDataSource() // статический метод, который считывает данные из .json файла, помещает их в переменные, формирует и возвращает строку подключения к БД
         {
             string filePath = Environment.CurrentDirectory + @"\dataSource\dataSource.json";
             try
