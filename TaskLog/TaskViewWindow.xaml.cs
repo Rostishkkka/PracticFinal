@@ -21,7 +21,7 @@ namespace TaskLog
     public partial class TaskViewWindow : Window
     {
         private long IdCurrentTask, UserId;
-        private string CurrentEventType;
+        private string CurrentEventType; //skjdgskj
         public TaskViewWindow(Tasks task)
         {
             InitializeComponent();
