@@ -20,9 +20,14 @@
         </Grid.RowDefinitions>
         <StackPanel VerticalAlignment="Center"
                     Margin="10 0 0 0" Orientation="Horizontal">
-            <Button Content="Добавить"
+            <Button Content="Добавить задачу"
                     x:Name="AddTaskButton"
                     Click="AddTaskButton_Click"/>
+            <Button Content="Пользователи"
+                    Margin="20 0 0 0"
+                    Visibility="Collapsed"
+                    x:Name="UsersButton"
+                    Click="UsersButton_Click"/>
             <Button Content="Применить фильтр"
                     Margin="20 0 0 0"
                     x:Name="FilteringButton"
@@ -75,6 +80,8 @@
                       FontSize="20"
                       BorderThickness="1"
                       BorderBrush="Black"
+                      Background="White"
+                      Foreground="Black"
                       CanUserAddRows="False"
                       CanUserDeleteRows="False"
                       CanUserReorderColumns="False"

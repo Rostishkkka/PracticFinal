@@ -22,12 +22,17 @@ namespace TaskLog
     /// </summary>
     public partial class TasksWindow : Window
     {
+        private long UserId;
         public TasksWindow()
         {
             InitializeComponent();
             FillDataMainGrid();
             dateFromBox.DisplayDateEnd = DateTime.Now;
             dateToBox.DisplayDateEnd = DateTime.Now;
+            App app = (App)Application.Current;
+            UserId = app.UserId;
+            if(UserId == 2)
+                UsersButton.Visibility = Visibility.Visible;
         }
 
         public void FillDataMainGrid() // Функция заполняющая MainDataGrid данными из БД
@@ -111,8 +116,8 @@ namespace TaskLog
         private void AddTaskButton_Click(object sender, RoutedEventArgs e) // Обработчик события нажатия на кнопку "AddTaskButton". Открывает окно создания задачи
         {
             AddTaskWindow addTaskWindow = new AddTaskWindow();
-            bool? Result = addTaskWindow.ShowDialog();
-            if(Result == true) 
+            bool? result = addTaskWindow.ShowDialog();
+            if(result == true) 
             {
                 FillDataMainGrid();
             }
@@ -126,6 +131,12 @@ namespace TaskLog
             dateToBox.Text = "";
             typeBox.SelectedIndex = -1;
             FillDataMainGrid();
+        }
+
+        private void UsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            UsersViewWindow usersViewWindow = new UsersViewWindow();
+            usersViewWindow.ShowDialog();
         }
     }
 }

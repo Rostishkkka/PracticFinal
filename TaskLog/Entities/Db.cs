@@ -25,7 +25,12 @@ namespace TaskLog.Entities
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseLazyLoadingProxies();
-                optionsBuilder.UseSqlServer(ConnectionStringProvider.GetDataSource());
+                //optionsBuilder.UseSqlServer(ConnectionStringProvider.GetDataSource());
+                optionsBuilder.UseSqlServer("Data Source=DEREKOVSKY\\SQLEXPRESS;" +
+                    "Initial Catalog=TaskLog;" +
+                    "Integrated Security=True;" +
+                    "Trust Server Certificate=True;Command Timeout=300;" +
+                    "MultipleActiveResultSets=True");
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

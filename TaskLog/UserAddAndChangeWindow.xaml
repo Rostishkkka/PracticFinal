@@ -1,0 +1,47 @@
+﻿<Window x:Class="TaskLog.UserAddAndChangeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskLog"
+        mc:Ignorable="d"
+        Title="Информация о пользователе" Height="450" Width="300"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        x:Name="EditUserWindow"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="Gray">
+    <Grid>
+        <ui:SimpleStackPanel HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             Spacing="20">
+            <TextBox Width="200"
+                     MaxLength="50"
+                     ui:ControlHelper.Header="Имя и фамилия пользователя"
+                     x:Name="UserNameTextBox"/>
+            <TextBox Width="200"
+                     MaxLength="50"
+                     ui:ControlHelper.Header="Email"
+                     x:Name="UserEmailTextBox"/>
+            <PasswordBox x:Name="UserPassTextBox"
+                         ui:ControlHelper.Header="Пароль"
+                         ui:ControlHelper.PlaceholderText="Введите пароль"/>
+            <PasswordBox x:Name="RepeatPasswordTextBox"
+                         ui:ControlHelper.Header="Повторите пароль"
+                         ui:ControlHelper.PlaceholderText="Повторите пароль"/>
+            <Button Width="200"
+                    Content="Сохранить"
+                    FontWeight="SemiBold"
+                    Background="DarkGray"
+                    x:Name="SaveButton"
+                    Click="SaveButton_Click"/>
+            <Button Content="Отмена"
+                    Width="200"
+                    FontWeight="SemiBold"
+                    Background="DarkGray"
+                    x:Name="CancelButton"
+                    Click="CancelButton_Click"/>
+        </ui:SimpleStackPanel>
+    </Grid>
+</Window>
