@@ -13,7 +13,7 @@ namespace TaskLog
     {
         public static string GetDataSource() // статический метод, который считывает данные из .json файла, помещает их в переменные, формирует и возвращает строку подключения к БД
         {
-            string filePath = Environment.CurrentDirectory + @"\dataSource\dataSource.json";
+            string filePath = Directory.GetCurrentDirectory() + @"\dataSource\dataSource.json";
             try
             {
                 string json = File.ReadAllText(filePath);
